@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+              integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+              crossorigin="anonymous">
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <!-- jokim
+            부트스트랩을 사용하게 되더라도 css 파일만이 아닌 "js" 파일도 가져오셔야합니다.
+            실제로 부트스트랩에서 제공하는 템플릿에도 js 파일들이 포함되어 있어요
+        -->
+
+        <!-- 구글 폰트 -->
+        <link href="https://fonts.googleapis.com/css2?family=Gugi&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Gugi&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+        <meta charset="UTF-8">
+
+        <title>이수지 팔이</title>
+        \
+        <script>
+            $(document).ready(function () {
+                alert('다 로딩됐다!')
+                $.ajax({
+                    type: "GET",
+                    url: "https://api.manana.kr/exchange/rate.json",
+                    data: {},
+                    success: function (response) {
+                        let rate = response[1]['rate']
+                        let tempHtml = `달러-원 환율: ${rate}`
+                        $('#hwanyul').append(tempHtml);
+                    }
+                });
+
+            });
+
+            function order() {
+                let value = $('#order_name').val();
+                let value2 = $('#order_address').val();
+                let value3 = $('#order_number').val();
+
+                if (value == '') {
+                    alert('주문자 성함을 입력해주세요.');
+                } else if (value2 == '') {
+                    alert('주소를 입력해주세요.');
+                } else if (value3 == '') {
+                    alert('전화번호를 입력해주세요.');
+                } else {
+                    alert('주문이 완료되었습니다.');
+                }
+            }
+
+        </script>
+
+
+    </head>
+
+    <style>
+        .order {
+            width: 100px;
+            /*
+                jokim
+                width 값을 750 -> 200 변경하였습니다.
+
+                width 값을 아래 wrap class 의 width 값과 동일하게 설정하신 것 같아요
+
+                바로 아래 background-color 속성을 넣었으니
+                width 값을 750 일때,
+                100 일때 두 번 다 실행 시켜보시겠어요?! 그러면 느낌이 올거예요
+
+            */
+
+            margin: auto;
+        }
+
+        .title {
+            font-family: 'Gugi', cursive;
+            font-size: 40px;
+        }
+
+        .wrap {
+            width: 750px;
+            padding: 10px;
+            margin: auto;
+            font-family: 'Gugi', cursive;
+            font-family: 'Nanum Myeongjo', serif;
+        }
+
+
+        .form-group {
+            margin: 0px auto 0px
+        }
+
+        /* jokim
+             왜인지 이름이 중복됐을 것 같아 찾아보니 정말 있더군요
+
+             "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.css"
+
+             부스트스탭에서 가져다 쓴 이름의 클래스는 다시 사용하지 않는 것이 좋습니다.
+             지금은 문제가 없어보이나, 추후 꼬일 수 있어요
+        */
+
+        .form-control2 {
+            display: block;
+            margin: auto 20px;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.25rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+        }
+
+        .raterate {
+            color: blue;
+            margin-bottom: 10px;
+        }
+    </style>
+    <body>
+        <div class="wrap">
+
+            <!--
+                jokim
+                아래 HTML 을 보니 전체적으로 css 가 많이 빠져있네요
+                부트스트랩에서 가져온 HTML 소스에서 기존 class 내용을 삭제하면 안돼요!
+
+                삭제하는 순간 원하는 포맷이랑은 거리가 멀어집니다.
+            -->
+
+            <div>
+                <img src="https://i.imgur.com/cGRt7Kk.jpg">
+            </div>
+
+            <p><span class="title">회사원 이수지</span> 상품 가격: 40,000,000원부터~ / 1년~
+            </p>
+            <p><b> 인력 시장에서 흔히 볼 수 없는 상품으로 심신이 건강한 산업의 력군과 함께 일 해 볼 기회를 팝니다.</b>
+
+                <br> 1. 척 하면 척! 눈빛만 봐도 보스가 시킬 일을 미리 알고 준비하는 센스를 소유함! (본투비)
+                <br> 2. 손은 눈보다 빠르다! 분 당 1,000타가 넘는 타자 속도로 독보적인 워드 작업이 가능!
+                <br> 3. 스파르타쿠스! 새로운 일을 받아도, 급한 일을 시켜도 쉽게 좌절하지 않는 근성이 만렙!
+            </p>
+
+            <p><b>삐빅 - 주의하세요. </b>
+                <br> 1. 밥을 굶기거나 면전에서 비난하면 갑자기 도망갈 수도 있어요.
+                <br> 2. 감정의 기복이 심함 주의! 업무 기복에도 영향이 가요! 그럴 땐 달달한 걸 주입하면 즉시 원복 가능
+                <br> 3. 가끔의 벙개와 회식은 업무의 일환이자 윤활유이자 사랑입니다.
+            </p>
+
+            <p class="title">주문하기</p>
+
+
+            <div id="hwanyul" class="raterate"></div>
+
+
+            <div>
+                <!--
+                    jokim
+                    form -> div 로 제가 일단 변경했어요
+                -->
+                <div class="form-group row">
+                    <label>주문자 성함:</label>
+                    <input class="form-control2" id="order_name">
+                </div>
+                <div class="form-group row" id="">
+                    <label>기간:</label>
+                    <select class="form-control2" style="margin-left: 70px;">
+                        <!--
+                            jokim
+                            여기를 시작으로 총 세 가지 부분에서
+
+                            제가 style 값으로 margin-left 값을 넣었습니다.
+
+                            일단은 부트스트랩 css 가 거의 적용되어 있지않은 상태이지만,
+                            결과적으로는 이렇게라도 가능하다라는 것을 보여드리기 위해 넣었어요
+
+                            참고만 하세요
+                            속성을 하나만 넣을 때는 저렇게 태그 내에 style 을 넣어서 할 수도 있지만
+                            속성이 여러개거나.. 다른 태그에서 반복적으로 사용된다면
+
+                            상단에 class 를 지정해서 하는 것이 더 좋은 방법입니다.
+
+
+                        -->
+
+                        <option>하루 일할 체험</option>
+                        <option>3개월 수습 체험</option>
+                        <option>반년 정도 지켜보기</option>
+                        <option>1년 즉시 채용</option>
+                        <option>기타 조건 제시</option>
+                    </select>
+                </div>
+                <div class="form-group row">
+                    <label>주소:</label>
+                    <input class="form-control2" id="order_address" style="margin-left: 70px;">
+                </div>
+                <div class="form-group row">
+                    <label>전화번호:</label>
+                    <input class="form-control2" id="order_number" style="margin-left: 40px;">
+                </div>
+            </div>
+
+            <div class="order">
+                <button onclick="order()" type="button" class="btn btn-primary">주문하기</button>
+            </div>
+
+        </div>
+    </body>
+</html>
